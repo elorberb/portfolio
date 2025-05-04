@@ -1,57 +1,395 @@
-
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Dennis Ivy</title>
+        <title>Etay Lorber</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="./styles/main.css">
         <link rel="stylesheet" href="./styles/theme-switcher.css">
+        <style>
+            .company-logo {
+                height: 40px;
+                margin-right: 10px;
+                vertical-align: middle;
+            }
+            .social-icon {
+                height: 24px;
+                width: 24px;
+                margin-right: 5px;
+                vertical-align: middle;
+                transition: transform 0.3s ease;
+            }
+            .social-icon:hover {
+                transform: scale(1.1);
+            }
+            /* GitHub logo will be white in dark mode */
+            [data-theme="dark"] .github-icon {
+                filter: invert(1);
+            }
+            /* Increase social links text size */
+            #socials--list a {
+                font-size: 1.2rem;
+                padding: 0.5rem;
+                transition: all 0.3s ease;
+            }
+            #socials--list a:hover {
+                transform: translateY(-2px);
+                text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+            /* Tech stack styling */
+            .card--techstack {
+                padding: 1rem;
+                border: 1px solid #e2e8f0;
+                border-radius: 0.5rem;
+                background: #ffffff;
+                font-size: 1.1rem;
+                margin: 0.5rem;
+                transition: all 0.3s ease;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            }
+            .card--techstack:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            }
+            [data-theme="dark"] .card--techstack {
+                background: #2a2a2a;
+                border-color: #333333;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            }
+            [data-theme="dark"] .card--techstack:hover {
+                box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+            }
+            /* Skills list styling */
+            #qualifications--list li {
+                font-size: 1.1rem;
+                margin-bottom: 0.5rem;
+                transition: all 0.3s ease;
+            }
+            #qualifications--list li:hover {
+                transform: translateX(5px);
+            }
+            /* Bio text styling */
+            #bio {
+                font-size: 1.2rem;
+                line-height: 1.6;
+            }
+            #bio a {
+                color: #1e40af;
+                text-decoration: none;
+                font-weight: 600;
+                transition: all 0.3s ease;
+            }
+            #bio a:hover {
+                color: #2563eb;
+                text-decoration: underline;
+            }
+            [data-theme="dark"] #bio a {
+                color: #60a5fa;
+            }
+            [data-theme="dark"] #bio a:hover {
+                color: #93c5fd;
+            }
+            #email {
+                font-size: 1.2rem;
+            }
+            #email a {
+                color: inherit;
+                text-decoration: none;
+                transition: all 0.3s ease;
+            }
+            #email a:hover {
+                text-decoration: underline;
+                transform: translateX(5px);
+            }
+            /* Project cards styling */
+            .card--project {
+                transition: all 0.3s ease;
+                border-radius: 0.5rem;
+                padding: 1.5rem;
+                margin-bottom: 1.5rem;
+                background: #ffffff;
+            }
+            .card--project a {
+                text-decoration: none;
+                color: inherit;
+                display: block;
+            }
+            .card--project .project-description {
+                margin-top: 0.5rem;
+                font-size: 0.95rem;
+                color: #4b5563;
+                line-height: 1.5;
+            }
+            [data-theme="dark"] .card--project .project-description {
+                color: #9ca3af;
+            }
+            .card--project:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            }
+            [data-theme="dark"] .card--project:hover {
+                box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+            }
+            [data-theme="dark"] .card--project {
+                background: #2a2a2a;
+            }
+            /* Work history cards styling */
+            .card--work-history {
+                transition: all 0.3s ease;
+                border-radius: 0.5rem;
+                padding: 1.5rem;
+                margin-bottom: 1.5rem;
+                background: #ffffff;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            }
+            .card--work-history:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            }
+            [data-theme="dark"] .card--work-history {
+                background: #2a2a2a;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            }
+            [data-theme="dark"] .card--work-history:hover {
+                box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+            }
+            /* Section styling */
+            .section--page {
+                padding: 2rem;
+                margin-bottom: 2rem;
+                border-radius: 0.5rem;
+                background: #f8f9fa;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            }
+            [data-theme="dark"] .section--page {
+                background: #1a1a1a;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            }
+            /* Theme switcher animation */
+            .theme {
+                transition: transform 0.3s ease;
+            }
+            .theme:hover {
+                transform: scale(1.1);
+            }
+            /* Theme transition */
+            body {
+                background-color: #f0f2f5;
+                transition: background-color 0.3s ease, color 0.3s ease;
+                min-height: 100vh;
+                margin: 0;
+                padding: 0;
+            }
+            [data-theme="dark"] body {
+                background-color: #121212;
+                color: #ffffff;
+            }
+            html {
+                background-color: #f0f2f5;
+                transition: background-color 0.3s ease;
+            }
+            [data-theme="dark"] html {
+                background-color: #121212;
+            }
+            .section--page {
+                transition: background-color 0.3s ease, box-shadow 0.3s ease;
+            }
+            
+            /* Section icons */
+            .section-title {
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+                margin-bottom: 1.5rem;
+            }
+            .section-icon {
+                font-size: 1.5rem;
+            }
+
+            /* Navigation menu */
+            .nav-menu {
+                position: fixed;
+                top: 20px;
+                left: 20px;
+                background: #f8f9fa;
+                padding: 1.5rem;
+                border-radius: 0.5rem;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+                z-index: 1000;
+                width: 200px;
+            }
+            [data-theme="dark"] .nav-menu {
+                background: #1a1a1a;
+                border: 1px solid #333333;
+            }
+            .nav-menu ul {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+            }
+            .nav-menu li {
+                margin: 0.75rem 0;
+            }
+            .nav-menu a {
+                color: #1e293b;
+                text-decoration: none;
+                font-size: 1rem;
+                padding: 0.5rem 0.75rem;
+                border-radius: 0.25rem;
+                transition: all 0.3s ease;
+                display: block;
+            }
+            [data-theme="dark"] .nav-menu a {
+                color: #ffffff;
+            }
+            .nav-menu a:hover {
+                background: #f1f5f9;
+                transform: translateX(5px);
+            }
+            [data-theme="dark"] .nav-menu a:hover {
+                background: #333333;
+            }
+            /* Adjust main content to account for nav and center it */
+            #container--main {
+                margin-left: 240px;
+                padding: 20px;
+                max-width: 1200px;
+                margin-right: auto;
+                margin-left: 240px;
+            }
+            .section--page {
+                max-width: 800px;
+                margin: 0 auto;
+                padding: 2rem;
+                margin-bottom: 2rem;
+                border-radius: 0.5rem;
+                background: #ffffff;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            }
+            @media (max-width: 768px) {
+                .nav-menu {
+                    width: 100%;
+                    position: relative;
+                    top: 0;
+                    left: 0;
+                    margin-bottom: 20px;
+                }
+                #container--main {
+                    margin-left: 0;
+                    padding: 20px;
+                }
+                .section--page {
+                    max-width: 100%;
+                }
+            }
+
+            /* Projects section styling */
+            #projects {
+                max-height: 600px;
+                overflow-y: auto;
+                padding-right: 1rem;
+            }
+            #projects::-webkit-scrollbar {
+                width: 8px;
+            }
+            #projects::-webkit-scrollbar-track {
+                background: #f1f5f9;
+                border-radius: 4px;
+            }
+            #projects::-webkit-scrollbar-thumb {
+                background: #cbd5e1;
+                border-radius: 4px;
+            }
+            #projects::-webkit-scrollbar-thumb:hover {
+                background: #94a3b8;
+            }
+            [data-theme="dark"] #projects::-webkit-scrollbar-track {
+                background: #1a1a1a;
+            }
+            [data-theme="dark"] #projects::-webkit-scrollbar-thumb {
+                background: #333333;
+            }
+            [data-theme="dark"] #projects::-webkit-scrollbar-thumb:hover {
+                background: #404040;
+            }
+        </style>
     </head>
     <body>
+        <!-- Navigation Menu -->
+        <nav class="nav-menu">
+            <ul>
+                <li><a href="#wrapper--hero">🏠 Home</a></li>
+                <li><a href="#socials--list">🔗 Social</a></li>
+                <li><a href="#qualifications--list">💡 Skills</a></li>
+                <li><a href="#wrapper--techstack__items">⚙️ Tech Stack</a></li>
+                <li><a href="#work-history-wrapper">💼 Experience</a></li>
+                <li><a href="#projects"> 🗂️ Projects</a></li>
+            </ul>
+        </nav>
+
         <div id="container--main">
 
             <section id="wrapper--hero" class="section--page">
                 <img id="profile-pic" src="./assets/images/profile_pic.png">
 
                 <div>
-                    <h1 id="user-name">Dennis Ivy</h1>
-                    <p id="bio">Software developer, developer advocate at <a href="https://www.appwrite.io/" target="_blank">Appwrite</a>, Udemy <a href="https://www.udemy.com/user/dennis-ivanov-5/" target="_blank">instructor</a>, <a href="https://www.youtube.com/c/dennisivy" target="_blank">YouTuber</a> and contributor at <a href="https://youtu.be/PtQiiknWUcI?t=6" target="_blank">Traversy Media</a>.</p>
-                    <p id="email">👉 dennis@dennisivy.com</p>
+                    <h1 id="user-name">Etay Lorber</h1>
+                    <p id="bio">Data Scientist at <a href="https://ai-solutions.co.il/" target="_blank">Intel AI Solution Group</a>, with expertise in building AI tools and RAG systems. M.Sc. graduate from <a href="https://in.bgu.ac.il/en/engn/sise/ennew/Pages/default.aspx" target="_blank">Ben Gurion University</a>.</p>
+                    <p id="email">👉 <a href="mailto:lorber.etay@gmail.com">lorber.etay@gmail.com</a></p>
                 </div>  
             </section>
 
             <section class="section--page">
-        
                 <div id="socials--list">
-                    <a href="https://youtube.com/c/dennisivy" target="_blank">Youtube</a>
-                    <a href="https://twitter.com/dennisivy11" target="_blank">Twitter</a>
-                    <a href="https://www.linkedin.com/in/dennis-ivanov/" target="_blank">Linkedin</a>
-                    <a href="https://github.com/divanov11" target="_blank">Github</a>
-                    <a href="./assets/resume.pdf" target="_blank">Download Resume</a>
+                    <a href="https://github.com/elorberb" target="_blank"><img src="./assets/images/github.svg" alt="GitHub" class="social-icon github-icon"> GitHub</a>
+                    <a href="https://www.linkedin.com/in/etay-arie-lorberboym-ab8342177/" target="_blank"><img src="./assets/images/linkedin.svg" alt="LinkedIn" class="social-icon"> LinkedIn</a>
+                    <a href="./assets/resume.pdf" target="_blank">📝 Download Resume</a>
                 </div>
             </section>
 
             <section class="section--page">
                 <h2>Skills & Qualifications</h2>
                 <ul id="qualifications--list">
-                    <li>✔️ 10 Years experience in fullstack development</li>
-                    <li>✔️ Tech educator & online instructor (Youtube & Udemy)</li>
-                    <li>✔️ Techincal writing & Blogging</li>
-                    <li>✔️ SEO & paid ad campaigns (Google Adwords)</li>
+                    <li>✔️ 3 Years experience in AI/ML development and research</li>
+                    <li>✔️ Expertise in building agentic RAG systems and multimodal AI applications</li>
+                    <li>✔️ Experience with large-scale ML pipelines and DL models</li>
+                    <li>✔️ Fast-track M.Sc. graduate with research focus in Computer Vision</li>
                 </ul>
             </section>
 
             <section class="section--page">
-                <h2>Tech stack</h2>
+                <h2>Research Fields & Tech Stack</h2>
 
+                <div class="section-title">
+                    <span class="section-icon">🔬</span>
+                    <h3>Research Fields</h3>
+                </div>
                 <div id="wrapper--techstack__items">
-                    <div class="card--techstack"><span>Python, JavaScript, NodeJS</span></div>
-                    <div class="card--techstack"><span>Django, Express, Flask, FastAPI</span></div>
-                    <div class="card--techstack"><span>React, Next JS</span></div>
-                    <div class="card--techstack"><span>Postgres, MongoDB, MySQL</span></div>
+                    <div class="card--techstack"><span>Natural Language Processing (NLP)</span></div>
+                    <div class="card--techstack"><span>Computer Vision</span></div>
+                    <div class="card--techstack"><span>Time Series Analysis</span></div>
+                    <div class="card--techstack"><span>Machine Learning</span></div>
+                    <div class="card--techstack"><span>Deep Learning</span></div>
+                    <div class="card--techstack"><span>Reinforcement Learning</span></div>
+                    <div class="card--techstack"><span>Search Algorithms</span></div>
+                    <div class="card--techstack"><span>Agentic Systems</span></div>
+                    <div class="card--techstack"><span>Retrieval-Augmented Generation (RAG)</span></div>
+                </div>
+
+                <div class="section-title" style="margin-top: 2rem;">
+                    <span class="section-icon">⚙️</span>
+                    <h3>Technical Stack</h3>
+                </div>
+                <div id="wrapper--techstack__items">
+                    <div class="card--techstack"><span>Python, Java, Git, Linux</span></div>
+                    <div class="card--techstack"><span>PyTorch, TensorFlow, Scikit-learn</span></div>
+                    <div class="card--techstack"><span>LangChain, LangGraph, HuggingFace</span></div>
+                    <div class="card--techstack"><span>SQL, NoSQL, Vector DBs</span></div>
+                    <div class="card--techstack"><span>AWS, GCP, Azure</span></div>
+                    <div class="card--techstack"><span>Numpy, Pandas, Matplotlib</span></div>
+                    <div class="card--techstack"><span>Docker, Kubernetes, CI/CD</span></div>
                 </div>
             </section>
 
@@ -59,106 +397,154 @@
                 <h2>Work History</h2>
 
                 <div class="card--work-history">
-                    <strong>🚧 DEVELOPER ADVOCATE | APPWRITE.IO</strong>
-                    <p>9/2023 - present</p>
-                    <p><strong>[Current Challenge]</strong> Working to improve developer adoption and experience across all Appwrites SDKs through educational content on the Appwrite <a href="https://www.youtube.com/appwrite" target="_blank">Youtube channel</a>, <a href="https://appwrite.io/blog/author/dennis-ivy" target="_blank">articles</a>, & <a href="https://www.youtube.com/live/VJvawxeUhN4">community events</a></p>
-                    <strong>[Progress since 9/2023]</strong>
+                    <strong>🚧 DATA SCIENTIST | INTEL AI SOLUTION GROUP</strong>
+                    <p>Apr 2023 - Current</p>
+                    <p>Leading the development of multimodal AI capabilities and RAG systems for Intel's AI Chatbot team.</p>
                     <ul>
-                        <li>Videos +39 | Views +136.6k</li>
-                        <li>Live streams: 5</li>
-                        <li>Articles: 9</li>
-                        <li>Events attended: 4</li>
+                        <li>Developed multimodal capabilities for RAG agent with image retrieval and generation</li>
+                        <li>Engineered Text2SQL tool for natural language querying of bug databases</li>
+                        <li>Built evaluation framework for context retrieval and generation quality</li>
+                        <li>Designed ingestion pipelines for various document formats</li>
+                        <li>Led integration of Confluence wikis into the RAG agent</li>
                     </ul>
                 </div>
 
                 <div class="line-break"></div>
 
                 <div class="card--work-history">
-                    <strong>🚧 DEVELOPER ADVOCATE | AGORA.IO</strong>
-                    <p>11/2021 - 9/2023</p>
-                    <p>Worked on making Agora’s Web-Based SDK more accessible through video tutorials, articles, demo projects, and event-based training. Also building out React UI components & leading a team to re-design Agora’s documentation and API reference.</p>
+                    <strong>🚧 MACHINE LEARNING ENGINEER | INTEL AI SOLUTION GROUP</strong>
+                    <p>May 2022 - Apr 2023</p>
+                    <p>Developed ML solutions for chip design automation and improved development workflows.</p>
                     <ul>
-                        <li>Doubled Web SDK’s monthly usage minutes from 15 million to 30 million minutes within my first 4 months</li>
-                        <li>Produced educational video content which resulted in 300k+ views on youtube</li>
-                        <li>Produced SEO campaigns and content to gain market share for related keywords.</li>
+                        <li>Created Python and Spark workflows for pre-silicon bug detection</li>
+                        <li>Automated GitHub CI/CD workflows with Python and Jenkins</li>
+                        <li>Integrated SonarQube for real-time code analysis</li>
                     </ul>
                 </div>
 
                 <div class="line-break"></div>
 
                 <div class="card--work-history">
-                    <strong>🚧 INSTRUCTOR | YOUTUBE, UDEMY, TEACHABLE</strong>
-                    <p>11/2019 - Present</p>
-                    <p>Produced content showcasing new tech, tutorials & interviews with top developers.</p>
+                    <strong>🚧 TEACHER ASSISTANT & RESEARCHER | BEN GURION UNIVERSITY</strong>
+                    <p>Oct 2023 - Oct 2024</p>
+                    <p>Instructed advanced ML courses and conducted research in Computer Vision.</p>
                     <ul>
-                        <li>210k+ Youtube Subscribers</li>
-                        <li>30,000 course copies sold</li>
-                        <li>12+ Million views on Youtube</li>
-                        <li>Made regular contributions to Traversy Medias YouTube channel (1.9m Subscribers)</li>
-                        <li>Tutorial videos included projects such as social networks, E-commerce, real-time video, stripe & PayPal integrations, and more </li>
+                        <li>Taught Time Series Analysis and Data Mining for Algo Trading</li>
+                        <li>Conducted research on Cannabis Flower Maturity using Computer Vision</li>
+                        <li>Selected for accelerated B.Sc/M.Sc research track</li>
                     </ul>
                 </div>
 
                 <div class="line-break"></div>
 
                 <div class="card--work-history">
-                    <strong>🚧 SENIOR DEVELOPER | FOI LABS</strong>
-                    <p>10/2017 - 10/2019</p>
-                    <p>Designed and developed a laboratory management system. My system
-                        provided an interface for lab technicians and customers to view and
-                        track data from samples tested in the lab.</p>
+                    <strong>🚧 TEAM LEADER | YAHALOM SPECIAL ENGINEERING UNIT</strong>
+                    <p>Mar 2014 - May 2017</p>
+                    <p>Led an elite military engineering team in complex operations.</p>
                     <ul>
-                        <li>Designed prototype & pitched original idea for new lab management system (LIMS)</li>
-                        <li>Built the entire code base and brought version 1.0 of the LIMS system to market as a solo developer</li>
-                        <li>Onboarded and trained customers (Webinars & Conferences)</li>
-                        <li>Managed a small team of developers in the expansion of the LIMS system</li>
-                    </ul>
-                </div>
-
-                <div class="line-break"></div>
-
-                <div class="card--work-history">
-                    <strong>🚧 DIGITAL MARKETER | UNIFIVE DIGITAL</strong>
-                    <p>2014 - 2017</p>
-                    <p>Started a digital agency building websites and marketing for
-                        local businesses.</p>
-                    <ul>
-                        <li>Organized SEO & SEM campaigns on a local and global scale.</li>
-                        <li>Saved a customer $110k a year by reducing Adwords CPC cost with optimization</li>
-                        <li>70 + websites built with my small team of developers and freelancers</li>
+                        <li>Led team operations and strategic planning</li>
+                        <li>Developed leadership and decision-making skills</li>
+                        <li>Managed cutting-edge technological operations</li>
                     </ul>
                 </div>
             </section>
 
-            <section class="section--page">
-                <h2>Projects & Accomplishments</h2>
-
-                <div class="card--project">
-                    <a href="project1.html"><span>🏆 </span>Built a Laboratory management system for forensics lab</a>
+            <section class="section--page" id="projects">
+                <div class="section-title">
+                    <span class="section-icon">🏆</span>
+                    <h2>Coding and Research Projects </h2>
                 </div>
 
                 <div class="card--project">
-                    <a href="project1.html" ><span>🏆 </span>Documentation website - Lead team to re-build docs for agora.io</a>
+                    <a href="https://github.com/elorberb/Dubby" target="_blank">
+                        <span>🏆 </span>Dubby: Understanding Persuasion on Reddit's Change My View
+                        <p class="project-description">An NLP project leveraging transformer-based models to predict persuasive impact in Reddit's CMV forum. Focuses on understanding what makes arguments compelling through delta prediction.</p>
+                    </a>
                 </div>
 
                 <div class="card--project">
-                    <a href="project1.html" ><span>🏆 </span>Ecommerce platform using paypal and stripe API for payment integration</a>
+                    <a href="https://github.com/elorberb/Search-Engine" target="_blank">
+                        <span>🏆 </span>Wikipedia Search Engine
+                        <p class="project-description">A search engine that operates on Wikipedia data, leveraging techniques like cosine similarity and tf-idf, as well as utilizing pre-trained models like word2vec. Features modular architecture with specialized components for efficient document retrieval and ranking.</p>
+                    </a>
                 </div>
 
                 <div class="card--project">
-                    <a href="project1.html"><span>🏆 </span>Social Network - open source project</a>
+                    <a href="https://github.com/elorberb/arava-valley-animal-detector" target="_blank">
+                        <span>🏆 </span>Automated Detection of Animals in the Arava Valley
+                        <p class="project-description">A comprehensive system for analyzing traffic camera images to identify and track animal movements across the Arava Valley. Combines YOLO, segmentation techniques, and directional analysis to detect and categorize various animals native to Israel.</p>
+                    </a>
+                </div>
+
+                <div class="card--project">
+                    <a href="https://github.com/elorberb/dfbnb-anomaly-restore" target="_blank">
+                        <span>🏆 </span>Depth-First Branch-and-Bound (DFBnB) Anomaly Restore
+                        <p class="project-description">Implementation and analysis of the DFBnB algorithm in Python, focusing on an interesting anomaly where the algorithm performs in polynomial time under specific conditions. Features comprehensive experimentation and visualization of the anomaly's behavior.</p>
+                    </a>
+                </div>
+
+                <div class="card--project">
+                    <a href="https://github.com/elorberb/REINFORCE" target="_blank">
+                        <span>🏆 </span>REINFORCE: Policy Gradient Methods
+                        <p class="project-description">Implementation and comparison of various reinforcement learning algorithms in the CartPole environment, including REINFORCE, REINFORCE with baseline, and REINFORCE with actor-critic methods. Features comprehensive performance analysis and visualization.</p>
+                    </a>
+                </div>
+
+                <div class="card--project">
+                    <a href="https://github.com/elorberb/Q_learning_to_DQN" target="_blank">
+                        <span>🏆 </span>From Q-Learning to Deep Q-Learning
+                        <p class="project-description">A comprehensive journey through reinforcement learning algorithms, from basic Q-Learning in FrozenLake to advanced Deep Q-Learning in CartPole. Features implementation of experience replay, neural network approximation, and various improvements to the DQN algorithm.</p>
+                    </a>
+                </div>
+
+                <div class="card--project">
+                    <a href="https://github.com/elorberb/song-generator-model" target="_blank">
+                        <span>🏆 </span>Song Generator Model
+                        <p class="project-description">A Gated Recurrent Unit (GRU) model built with PyTorch for generating song lyrics. Trained on a dataset of over 50,000 songs, the model learns correlations between musical patterns and lyrics to generate diverse and representative new lyrics.</p>
+                    </a>
                 </div>
 
             </section>
-
-       
         </div>
+
         <div id="theme-switcher">
             <div class="theme" id="theme-light" data-theme="light"></div>
             <div class="theme" id="theme-dark" data-theme="dark"></div>
         </div>
+
+        <script>
+            // Add smooth theme transition
+            document.addEventListener('DOMContentLoaded', function() {
+                const themeSwitcher = document.getElementById('theme-switcher');
+                const body = document.body;
+                const html = document.documentElement;
+                
+                // Set initial theme to dark
+                body.setAttribute('data-theme', 'dark');
+                html.setAttribute('data-theme', 'dark');
+                body.style.backgroundColor = '#121212';
+                html.style.backgroundColor = '#121212';
+                
+                themeSwitcher.addEventListener('click', function(e) {
+                    if (e.target.classList.contains('theme')) {
+                        const theme = e.target.dataset.theme;
+                        body.setAttribute('data-theme', theme);
+                        html.setAttribute('data-theme', theme);
+                        
+                        // Force background color update
+                        if (theme === 'dark') {
+                            body.style.backgroundColor = '#121212';
+                            html.style.backgroundColor = '#121212';
+                        } else {
+                            body.style.backgroundColor = '#f0f2f5';
+                            html.style.backgroundColor = '#f0f2f5';
+                        }
+                    }
+                });
+            });
+        </script>
     </body>
-    <script src="js/theme-switcher.js"></script>
 </html>
+
 
 
