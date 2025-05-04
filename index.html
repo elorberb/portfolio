@@ -269,50 +269,282 @@
                 box-shadow: 0 2px 4px rgba(0,0,0,0.05);
             }
             @media (max-width: 768px) {
-                .nav-menu {
+                /* Main Content Layout */
+                #container--main {
+                    margin: 0;
+                    padding: 10px;
                     width: 100%;
-                    position: relative;
+                    box-sizing: border-box;
+                }
+
+                .section--page {
+                    width: 100%;
+                    margin: 10px 0;
+                    padding: 15px;
+                    box-sizing: border-box;
+                }
+
+                /* Tech Stack Grid Layout */
+                #wrapper--techstack__items {
+                    display: grid;
+                    grid-template-columns: repeat(2, 1fr);
+                    gap: 10px;
+                    width: 100%;
+                }
+
+                .card--techstack {
+                    width: 100%;
+                    min-height: 60px;
+                    padding: 10px;
+                    margin: 0;
+                    box-sizing: border-box;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    text-align: center;
+                }
+
+                .card--techstack span {
+                    font-size: 0.9em;
+                    word-break: break-word;
+                }
+
+                /* Project Cards */
+                .card--project {
+                    width: 100%;
+                    margin: 10px 0;
+                    padding: 15px;
+                    box-sizing: border-box;
+                }
+
+                .card--project a {
+                    display: block;
+                    width: 100%;
+                }
+
+                .project-description {
+                    font-size: 0.95em;
+                    line-height: 1.5;
+                }
+
+                /* Work History Cards */
+                .card--work-history {
+                    width: 100%;
+                    margin: 10px 0;
+                    padding: 15px;
+                    box-sizing: border-box;
+                }
+
+                .card--work-history ul {
+                    padding-left: 20px;
+                }
+
+                .card--work-history li {
+                    margin-bottom: 8px;
+                    font-size: 0.95em;
+                }
+
+                /* Bio Section */
+                #wrapper--hero {
+                    flex-direction: column;
+                    align-items: center;
+                    text-align: center;
+                    padding: 20px 15px;
+                }
+
+                #profile-pic {
+                    width: 150px;
+                    height: 150px;
+                    margin: 0 0 20px 0;
+                }
+
+                #user-name {
+                    font-size: 1.8em;
+                    margin-bottom: 10px;
+                }
+
+                #bio {
+                    font-size: 1em;
+                    line-height: 1.5;
+                }
+
+                /* Social Links */
+                #socials--list {
+                    display: flex;
+                    flex-wrap: wrap;
+                    justify-content: center;
+                    gap: 10px;
+                    padding: 10px;
+                }
+
+                #socials--list a {
+                    flex: 1 1 120px;
+                    min-width: 120px;
+                    text-align: center;
+                    padding: 10px;
+                    margin: 5px;
+                }
+
+                /* Navigation Menu */
+                .nav-menu {
+                    position: fixed;
                     top: 0;
                     left: 0;
-                    margin-bottom: 20px;
+                    width: 100%;
+                    transform: translateY(-100%);
+                    transition: transform 0.3s ease;
+                    z-index: 1000;
+                    background: var(--card-bg);
+                    padding: 15px;
                 }
+
+                .nav-menu.active {
+                    transform: translateY(0);
+                }
+
+                .nav-menu ul {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    gap: 10px;
+                }
+
+                .nav-menu a {
+                    padding: 10px 20px;
+                    width: 100%;
+                    text-align: center;
+                }
+
+                /* Menu Toggle Button */
+                .menu-toggle {
+                    position: fixed;
+                    top: 15px;
+                    left: 15px;
+                    z-index: 1001;
+                    background: var(--card-bg);
+                    border: none;
+                    padding: 10px;
+                    border-radius: 5px;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 5px;
+                    cursor: pointer;
+                }
+
+                .menu-toggle span {
+                    display: block;
+                    width: 25px;
+                    height: 3px;
+                    background: var(--text-color);
+                    transition: all 0.3s ease;
+                }
+
+                .menu-toggle.active span:nth-child(1) {
+                    transform: rotate(45deg) translate(5px, 5px);
+                }
+
+                .menu-toggle.active span:nth-child(2) {
+                    opacity: 0;
+                }
+
+                .menu-toggle.active span:nth-child(3) {
+                    transform: rotate(-45deg) translate(5px, -5px);
+                }
+
+                /* Adjust main content to account for menu button */
                 #container--main {
-                    margin-left: 0;
-                    padding: 20px;
-                }
-                .section--page {
-                    max-width: 100%;
+                    margin-top: 50px;
                 }
             }
 
-            /* Projects section styling */
-            #projects {
-                max-height: 600px;
-                overflow-y: auto;
-                padding-right: 1rem;
+            @media (max-width: 480px) {
+                .bio img {
+                    width: 120px;
+                    height: 120px;
+                }
+
+                .bio-content h1 {
+                    font-size: 1.6em;
+                }
+
+                .bio-content p {
+                    font-size: 0.95em;
+                }
+
+                .card {
+                    padding: 12px;
+                }
+
+                .project-card {
+                    padding: 12px;
+                }
+
+                .project-card h3 {
+                    font-size: 1.1em;
+                }
+
+                .project-card p {
+                    font-size: 0.9em;
+                }
+
+                .tech-stack h3 {
+                    font-size: 1.2em;
+                }
+
+                .tech-stack ul {
+                    font-size: 0.9em;
+                }
+
+                .sidebar a {
+                    padding: 6px 10px;
+                    font-size: 0.85em;
+                }
+
+                #wrapper--techstack__items {
+                    grid-template-columns: 1fr;
+                }
+
+                .card--techstack {
+                    min-height: 50px;
+                }
+
+                #socials--list a {
+                    flex: 1 1 100px;
+                    min-width: 100px;
+                    font-size: 0.9em;
+                }
+
+                .nav-menu a {
+                    padding: 8px 15px;
+                    font-size: 0.95em;
+                }
             }
-            #projects::-webkit-scrollbar {
-                width: 8px;
-            }
-            #projects::-webkit-scrollbar-track {
-                background: #f1f5f9;
-                border-radius: 4px;
-            }
-            #projects::-webkit-scrollbar-thumb {
-                background: #cbd5e1;
-                border-radius: 4px;
-            }
-            #projects::-webkit-scrollbar-thumb:hover {
-                background: #94a3b8;
-            }
-            [data-theme="dark"] #projects::-webkit-scrollbar-track {
-                background: #1a1a1a;
-            }
-            [data-theme="dark"] #projects::-webkit-scrollbar-thumb {
-                background: #333333;
-            }
-            [data-theme="dark"] #projects::-webkit-scrollbar-thumb:hover {
-                background: #404040;
+
+            /* Landscape Mode Optimization */
+            @media (max-height: 500px) and (orientation: landscape) {
+                .bio {
+                    flex-direction: row;
+                    padding: 10px;
+                }
+
+                .bio img {
+                    width: 100px;
+                    height: 100px;
+                    margin: 0 15px 0 0;
+                }
+
+                .bio-content {
+                    text-align: left;
+                }
+
+                .container {
+                    padding: 5px;
+                }
+
+                .card {
+                    padding: 10px;
+                    margin: 5px 0;
+                }
             }
         </style>
     </head>
@@ -539,6 +771,29 @@
                             body.style.backgroundColor = '#f0f2f5';
                             html.style.backgroundColor = '#f0f2f5';
                         }
+                    }
+                });
+            });
+
+            // Add JavaScript for mobile menu
+            document.addEventListener('DOMContentLoaded', function() {
+                const menuToggle = document.createElement('button');
+                menuToggle.className = 'menu-toggle';
+                menuToggle.innerHTML = '<span></span><span></span><span></span>';
+                document.body.appendChild(menuToggle);
+
+                const navMenu = document.querySelector('.nav-menu');
+                
+                menuToggle.addEventListener('click', function() {
+                    this.classList.toggle('active');
+                    navMenu.classList.toggle('active');
+                });
+
+                // Close menu when clicking outside
+                document.addEventListener('click', function(e) {
+                    if (!navMenu.contains(e.target) && !menuToggle.contains(e.target)) {
+                        menuToggle.classList.remove('active');
+                        navMenu.classList.remove('active');
                     }
                 });
             });
